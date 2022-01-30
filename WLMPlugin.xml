@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WLMPlugin</name>
+    </assembly>
+    <members>
+        <member name="T:WLMPlugin.BaseClientPlugin">
+            <summary>
+            Base client plugin
+            </summary>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.#ctor">
+            <summary>
+            The base of the class
+            </summary>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.Finalize">
+            <summary>
+            When the plugin gets destroyed
+            </summary>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.SetAuthor(System.String)">
+            <summary>
+            Specifies the author of the plugin
+            </summary>
+            <param name="auth">The author of the plugin</param>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.SetName(System.String)">
+            <summary>
+            Specifies the name of the plugin
+            </summary>
+            <param name="name">The name of the plugin</param>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.SetVersion(System.String)">
+            <summary>
+            Specifies the version of the plugin
+            </summary>
+            <param name="version">The version number</param>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.GetPluginInformation">
+            <summary>
+            This will retrieve our plugin information.
+            </summary>
+            <returns>Returns the information of this plugin</returns>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.AddToDataBlock(WLMPlugin.PluginDataBlock)">
+            <summary>
+            Adds new data blocks into the plugin
+            </summary>
+            <param name="data">The specified data block</param>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.LoadConfig(System.Collections.Generic.List{WLMPlugin.PluginDataBlock})">
+            <summary>
+            Loads the configuration file
+            </summary>
+            <param name="datalist">The datablocks that was loaded from the config file</param>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.GetDataBlock(System.String)">
+            <summary>
+            Grabs the datablock
+            </summary>
+            <param name="ID">The specified ID to look for</param>
+            <returns>Returns the specified datablock, if it's valid.</returns>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.GetDataBlock(System.String,System.Collections.Generic.List{WLMPlugin.PluginDataBlock})">
+            <summary>
+            Grabs the datablock from a specified list
+            </summary>
+            <param name="ID">The specified ID to look for</param>
+            <param name="datalist">The datalist to look trough</param>
+            <returns>Returns the specified datablock, if it's valid.</returns>
+        </member>
+        <member name="T:WLMPlugin.UpdateInformation">
+            <summary>
+            Tells what kind of information UpdateStruct should send
+            </summary>
+        </member>
+        <member name="T:WLMPlugin.DataBlockType">
+            <summary>
+            Tells the PluginDataBlock what kind of type it is, so that we can properly read it
+            </summary>
+        </member>
+        <member name="T:WLMPlugin.PluginDataBlock">
+            <summary>
+            Plugin Datablocks are used by the plugin to set custom values which can be modified by the client.
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.Name">
+            <summary>
+            The name for the data block
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.ID">
+            <summary>
+            The ID for the data block
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.Data">
+            <summary>
+            This contains the information, such as simple statements to file paths
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.Type">
+            <summary>
+            Specifies what kind of data block this is
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.SaveToConfig">
+            <summary>
+            Saves the data block as a plugin config variable
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.EnableMaxValue">
+            <summary>
+            Enables max amount of value. Only available for interger and float values
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.EnableMinValue">
+            <summary>
+            Enables min amount of value. Only available for interger and float values
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.Min">
+            <summary>
+            The minimum value for interger and float values, if enabled.
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginDataBlock.Max">
+            <summary>
+            The maximum value for interger and float values, if enabled.
+            </summary>
+        </member>
+        <member name="T:WLMPlugin.PluginInformation">
+            <summary>
+            Contains the information of the plugin, such as name, author, version and much more
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginInformation.Name">
+            <summary>
+            The name of the plugin
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginInformation.Author">
+            <summary>
+            The author of the plugin
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginInformation.Version">
+            <summary>
+            The version number
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.PluginInformation.DataBlock">
+            <summary>
+            The list of datablocks
+            </summary>
+        </member>
+        <member name="T:WLMPlugin.UpdateStruct">
+            <summary>
+            The update structure that will be sent to the client
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.UpdateStruct.data">
+            <summary>
+            The data object should handle all the data that's being sent to the client
+            </summary>
+        </member>
+        <member name="P:WLMPlugin.UpdateStruct.inf">
+            <summary>
+            Specifies the information we want to update
+            </summary>
+        </member>
+        <member name="M:WLMPlugin.UpdateStruct.#ctor(System.Object,WLMPlugin.UpdateInformation)">
+            <summary>
+            Creates the update information to be read by the client
+            </summary>
+            <param name="data">The specified data we want to send to the client</param>
+            <param name="inf">The type of information we are sending</param>
+        </member>
+    </members>
+</doc>
