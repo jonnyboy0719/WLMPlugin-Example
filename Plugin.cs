@@ -62,7 +62,15 @@ namespace WLMPlugin
             data4.Data = "test example, does not save to config";
             AddToDataBlock(data4);
 
+            Hooks.RegisterHook( Events.SoundEvent );
+
             return true;
+        }
+
+        override public HookReturnCode OnHook_EventSound(string sound)
+        {
+            // Example hook, does nothing
+            return HookReturnCode.HANDLED;
         }
 
         /// <summary>

@@ -4,6 +4,70 @@
         <name>WLMPlugin</name>
     </assembly>
     <members>
+        <member name="T:WLMPlugin.HookReturnCode">
+            <summary>
+            Tells what kind of state the hook should return as
+            </summary>
+        </member>
+        <member name="F:WLMPlugin.HookReturnCode.CONTINUE">
+            <summary>
+            Continues the function
+            </summary>
+        </member>
+        <member name="F:WLMPlugin.HookReturnCode.HANDLED">
+            <summary>
+            Stops the function from continuing. This may also stop other plugins using the same function.
+            </summary>
+        </member>
+        <member name="T:WLMPlugin.Events">
+            <summary>
+            The possible events that our hook will be able to use
+            </summary>
+        </member>
+        <member name="F:WLMPlugin.Events.SoundEvent">
+            <summary>
+            Overrides sound events from the client. For example, can be used to override or use random sounds from said plugin
+            </summary>
+        </member>
+        <member name="F:WLMPlugin.Events.MessageRecieved">
+            <summary>
+            When a message is being recieved from another user
+            </summary>
+        </member>
+        <member name="F:WLMPlugin.Events.FriendLogin">
+            <summary>
+            When someone from your contact list has logged in
+            </summary>
+        </member>
+        <member name="F:WLMPlugin.Events.FriendRequest">
+            <summary>
+            When a new friend request has been recieved
+            </summary>
+        </member>
+        <member name="T:WLMPlugin.Hooks">
+            <summary>
+            Plugin Hooks class. Tells the client to override certain things if allowed.
+            </summary>
+        </member>
+        <member name="M:WLMPlugin.Hooks.ClearRegisteredHooks">
+            <summary>
+            Clears our registered hooks, if there is any
+            </summary>
+        </member>
+        <member name="M:WLMPlugin.Hooks.IsHookRegistered(WLMPlugin.Events)">
+            <summary>
+            Checks if said hook has been registered or not
+            </summary>
+            <param name="handle">The event we want check if it's already registered or not</param>
+            <returns>Returns true if an event has already been registered</returns>
+        </member>
+        <member name="M:WLMPlugin.Hooks.RegisterHook(WLMPlugin.Events)">
+            <summary>
+            Registers the possible events that the plugin can override and/or change
+            </summary>
+            <param name="handle">The event that will be registered</param>
+            <returns>Returns true if the hook haven't already been registered</returns>
+        </member>
         <member name="T:WLMPlugin.BaseClientPlugin">
             <summary>
             Base client plugin
@@ -18,6 +82,36 @@
             <summary>
             When the plugin gets destroyed
             </summary>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.OnHook_EventSound(System.String)">
+            <summary>
+            When the client is trying to play a sound
+            </summary>
+            <param name="sound">The sound the client is trying to play</param>
+            <returns>Returns the hook state</returns>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.OnHook_MessageRecieved(System.String,System.String)">
+            <summary>
+            When we recieve a message from someone
+            </summary>
+            <param name="id">The ID of the sender</param>
+            <param name="message">The message of the sender</param>
+            <returns>Returns the hook state</returns>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.OnHook_FriendLogin(System.String,System.String)">
+            <summary>
+            When someone from our friend list has logged in
+            </summary>
+            <param name="id">The ID of the user that logged in</param>
+            <param name="name">The name of the user that logged in</param>
+            <returns>Returns the hook state</returns>
+        </member>
+        <member name="M:WLMPlugin.BaseClientPlugin.OnHook_FriendRequest(System.String)">
+            <summary>
+            When we recieve a friend request
+            </summary>
+            <param name="name">The name of the user</param>
+            <returns>Returns the hook state</returns>
         </member>
         <member name="M:WLMPlugin.BaseClientPlugin.SetAuthor(System.String)">
             <summary>
